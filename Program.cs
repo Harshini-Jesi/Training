@@ -1,22 +1,26 @@
 ﻿using System;
-namespace Fibonacci {
+namespace lcm_gcd {
     class Program {
         static void Main (string[] args) {
-            Console.Write ("Input : ");
-            int n = int.Parse (Console.ReadLine ());
-            Console.Write ("Fibonacci series : ");
-            for (int i = 0; i < n; i++) { Console.Write (fib (i) + " "); }
+            Console.Write ("Input 1 : ");
+            int n1 = int.Parse (Console.ReadLine ());
+            Console.Write ("Input 2 : ");
+            int n2 = int.Parse (Console.ReadLine ());
+            int gcd = GCD (n1, n2);
+            int lcm = LCM (n1, n2);
+            Console.WriteLine ($"GCD : {gcd}");
+            Console.WriteLine ($"LCM : {lcm}");
         }
-        static int fib (int n) {
-            if (n <= 1)
-                return n;
-            int fib1 = 0, fib2 = 1, fib3 = 0;
-            for (int i = 2; i <= n; i++) {
-                fib3 = fib1 + fib2;
-                fib1 = fib2;
-                fib2 = fib3;
+        static int GCD (int x, int y) {
+            while (y != 0) {
+                int rem = x % y;
+                x = y;
+                y = rem;
             }
-            return fib3;
+            return x;
+        }
+        static int LCM (int x, int y) {
+            return (x * y) / GCD (x, y);
         }
     }
 }
