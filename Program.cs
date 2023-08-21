@@ -1,23 +1,14 @@
 ﻿using System;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace primenumber {
+namespace tables {
     class Program {
-        static bool IsPrime (int n) {
-            if (n <= 1) return false;
-            if (n <= 3) return true;
-            if (n % 2 == 0 || n % 3 == 0) return false;
-            for (int i = 5; i * i <= n; i += 6)
-                if (n % i == 0 || n % (i + 2) == 0) return false;
-            return true;
-        }
         static void Main (string[] args) {
-            Console.Write ("Enter a number : ");
-            int n = int.Parse (Console.ReadLine ());
-            if (IsPrime (n))
-                Console.WriteLine ($"{n} is a prime number");
-            else
-                Console.WriteLine ($"{n} is not a prime number");
+            for (int i = 1; i <= 10; i++) {
+                for (int j = 1; j <= 10; j++) {
+                    int result = i * j;
+                    Console.WriteLine ($"{i,2} * {j,2} = {result}");
+                }
+                Console.WriteLine ();
+            }
         }
     }
 }
