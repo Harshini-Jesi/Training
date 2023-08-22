@@ -27,12 +27,15 @@ namespace NumberConversion {
       }
 
       static void Main (string[] args) {
-         Console.Write ("Enter a number : ");
-         int num = int.Parse (Console.ReadLine ());
-         string words = ConvertToWords (num);
-         Console.WriteLine ($"Number in words : {words}");
-         string roman = ConvertToRoman (num);
-         Console.WriteLine ($"Number in romans : {roman}");
+         while (true) {
+            Console.Write ("Enter a number : ");
+            if (int.TryParse (Console.ReadLine (), out int num)) {
+               string words = ConvertToWords (num);
+               Console.WriteLine ($"Number in words : {words}");
+               string roman = ConvertToRoman (num);
+               Console.WriteLine ($"Number in romans : {roman}");break;
+            } else Console.WriteLine ("Enter a valid number");
+         }
       }
    }
 }
