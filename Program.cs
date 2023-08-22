@@ -1,16 +1,11 @@
 ﻿using System;
 while (true) {
-   Console.Write ("Enter a number : ");
+   Console.Write ("Enter the number of rows : ");
    if (int.TryParse (Console.ReadLine (), out int n)) {
       int spaces = n, stars = 1;
       for (int i = 0; i <= n; i++) {
-         Console.WriteLine (string.Concat (Enumerable.Repeat (" ", spaces)) + string.Concat (Enumerable.Repeat ("*", stars)));
-         spaces -= 1; stars += 2;
-      }
-      spaces += 2; stars -= 4;
-      for (int i = 1; i <= n; i++) {
-         Console.WriteLine (string.Concat (Enumerable.Repeat (" ", spaces)) + string.Concat (Enumerable.Repeat ("*", stars)));
-         spaces += 1; stars -= 2;
+         Console.WriteLine (string.Concat (Enumerable.Repeat (" ", spaces)) + stars);
+         spaces -= 1; stars += 1;
       }
       break;
    } else Console.WriteLine ("Enter a valid number");
