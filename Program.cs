@@ -14,10 +14,7 @@ namespace primenumber {
         static void Main (string[] args) {
             Console.Write ("Enter a number : ");
             int n = int.Parse (Console.ReadLine ());
-            if (IsPrime (n))
-                Console.WriteLine ($"{n} is a prime number");
-            else
-                Console.WriteLine ($"{n} is not a prime number");
+         var res => IsPrime (n) ? (Console.WriteLine ($"{n} is a prime number") : Console.WriteLine ($"{n} is not a prime number"));
         }
     }
 }
