@@ -1,5 +1,5 @@
 ﻿using System;
-namespace primenumber {
+namespace PrimeNumber {
    class Program {
       static bool IsPrime (int n) {
          if (n <= 1) return false;
@@ -9,6 +9,7 @@ namespace primenumber {
             if (n % i == 0 || n % (i + 2) == 0) return false;
          return true;
       }
+
       static void Main (string[] args) {
          while (true) {
             Console.Write ("Enter a number : ");
