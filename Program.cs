@@ -1,5 +1,5 @@
 ﻿using System;
-namespace decimalconversion {
+namespace Decimalconversion {
    class Program {
       static void Main (string[] args) {
          Console.Write ("Enter a decimal number : ");
