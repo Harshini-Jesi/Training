@@ -1,16 +1,16 @@
 ﻿using System;
 while (true) {
-   Console.Write ("Enter the number of rows : ");
+   Console.Write ("Enter a number : ");
    if (int.TryParse (Console.ReadLine (), out int n)) {
-      for (int i = 1; i <= n; i++) {
-         Console.Write (string.Concat (Enumerable.Repeat (" ", n - i + 1)));
-         int first = 1;
-         for (int j = 1; j <= i; j++) {
-            Console.Write ($"{first,5}" + " ");
-            first = first * (i - j) / j;
+      while (n > 9) {
+         int c = 0;
+         while (n > 0) {
+            int r = n % 10;
+            c += r;
+            n /= 10;
          }
-         Console.WriteLine ("\n");
+         n = c;
       }
-      break;
+      Console.WriteLine ($"Digital root : {n}"); break;
    } else Console.WriteLine ("Enter a valid number");
 }
