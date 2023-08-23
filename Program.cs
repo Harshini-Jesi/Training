@@ -2,10 +2,14 @@
 while (true) {
    Console.Write ("Enter the number of rows : ");
    if (int.TryParse (Console.ReadLine (), out int n)) {
-      int spaces = n, stars = 1;
-      for (int i = 0; i <= n; i++) {
-         Console.WriteLine (string.Concat (Enumerable.Repeat (" ", spaces)) + stars);
-         spaces -= 1; stars += 1;
+      for (int i = 1; i <= n; i++) {
+         Console.Write (string.Concat (Enumerable.Repeat (" ", n - i + 1)));
+         int first = 1;
+         for (int j = 1; j <= i; j++) {
+            Console.Write ($"{first,5}" + " ");
+            first = first * (i - j) / j;
+         }
+         Console.WriteLine ("\n");
       }
       break;
    } else Console.WriteLine ("Enter a valid number");
