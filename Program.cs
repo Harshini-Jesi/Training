@@ -13,5 +13,5 @@ while (true) {
          spaces += 1; stars -= 2;
       }
       break;
-   } else Console.WriteLine ("Enter a valid number");
+   } else Console.WriteLine ("Invalid input. Please enter a 'NUMBER'");
 }
