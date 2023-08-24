@@ -12,5 +12,5 @@ while (true) {
          n = c;
       }
       Console.WriteLine ($"Digital root : {n}"); break;
-   } else Console.WriteLine ("Enter a valid number");
+   } else Console.WriteLine ("Invalid input. Please enter a 'NUMBER'");
 }
