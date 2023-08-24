@@ -1,5 +1,4 @@
-﻿using System;
-while (true) {
+﻿while (true) {
    Console.Write ("Enter the number of rows : ");
    if (int.TryParse (Console.ReadLine (), out int n)) {
       for (int i = 1; i <= n; i++) {
@@ -12,5 +11,5 @@ while (true) {
          Console.WriteLine ("\n");
       }
       break;
-   } else Console.WriteLine ("Enter a valid number");
+   } else Console.WriteLine ("Invalid input. Please enter a 'NUMBER'");
 }
