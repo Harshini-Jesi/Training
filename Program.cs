@@ -16,7 +16,7 @@ namespace PrimeNumber {
             if (int.TryParse (Console.ReadLine (), out int n)) {
                var res = IsPrime (n) ? $"{n} is a prime number" : $"{n} is not a prime number";
                Console.WriteLine (res); break;
-            } else Console.WriteLine ("Enter a valid number");
+            } else Console.WriteLine ("Invalid input. Please enter a 'NUMBER'");
          }
       }
    }
