@@ -1,5 +1,4 @@
-﻿using System;
-Random random = new Random ();
+﻿Random random = new Random ();
 int target = random.Next (1, 101);
 int tries = 0, n = 0;
 Console.WriteLine ("Guess a number between 1 and 100\n");
