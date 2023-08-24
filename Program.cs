@@ -1,16 +1,14 @@
 ﻿using System;
-while (true) {
-   Console.Write ("Enter the number of rows : ");
-   if (int.TryParse (Console.ReadLine (), out int n)) {
-      for (int i = 1; i <= n; i++) {
-         Console.Write (string.Concat (Enumerable.Repeat (" ", n - i + 1)));
-         int first = 1;
-         for (int j = 1; j <= i; j++) {
-            Console.Write ($"{first,5}" + " ");
-            first = first * (i - j) / j;
-         }
-         Console.WriteLine ("\n");
-      }
-      break;
+Random random = new Random ();
+int target = random.Next (1, 101);
+int tries = 0, n = 0;
+Console.WriteLine ("Guess a number between 1 and 100\n");
+while (n != target) {
+   Console.Write ("Enter a number of your guess : ");
+   if (int.TryParse (Console.ReadLine (), out n)) {
+      tries++;
+      if (n < target) Console.WriteLine ("Try higher\n");
+      if (n > target) Console.WriteLine ("Try lower\n");
+      if (n == target) Console.WriteLine ($"\nYou guessed the number in {tries} tries");
    } else Console.WriteLine ("Enter a valid number");
 }
