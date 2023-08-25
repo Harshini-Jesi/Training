@@ -2,6 +2,7 @@
 int max = GetMax (mode);
 Random random = new Random ();
 int target = random.Next (1, max + 1);
+
 Mode GetMode () {
    Console.Write ("Select a mode  (E)asy, (M)edium, (H)ard : ");
    for (; ; ) {
@@ -14,6 +15,7 @@ Mode GetMode () {
       }
    }
 }
+
 int GetMax (Mode mode) {
    switch (mode) {
       case Mode.Easy: return 10;
