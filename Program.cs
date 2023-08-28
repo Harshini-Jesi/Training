@@ -5,12 +5,12 @@ while (true) {
       while (n > 9) {
          int c = 0;
          while (n > 0) {
-            int r = n % 10;
-            c += r;
+            c += n % 10;
             n /= 10;
          }
          n = c;
       }
-      Console.WriteLine ($"Digital root : {n}"); break;
-   } else Console.WriteLine ("Invalid input. Please enter a 'NUMBER'");
+      Console.WriteLine ($"Digital root : {n}");
+      break;
+   } else Console.WriteLine ("Invalid input. Please enter a 'NUMBER'.\n");
 }
