@@ -7,12 +7,20 @@ namespace NumberConversion {
       static string[] tens = { "", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety" };
 
       static string ConvertToWords (int num) {
-         int rem10 = num % 10, rem100 = num % 100, rem1000 = num % 1000;
          if (num < 0) return ("Negative " + ConvertToWords (-num));
          if (num < 20) return ones[num];
-         if (num < 100) return tens[num / 10] + (rem10 != 0 ? " " + ones[rem10] : " ");
-         if (num < 1000) return ones[num / 100] + " hundred" + (rem100 != 0 ? " and " + ConvertToWords (rem100) : "");
-         if (num < 1000000) return ConvertToWords (num / 1000) + " thousand" + (rem1000 != 0 ? " " + ConvertToWords (rem1000) : "");
+         if (num < 100) {
+            int rem10 = num % 10;
+            return tens[num / 10] + (rem10 != 0 ? " " + ones[rem10] : " ");
+         }
+         if (num < 1000) {
+            int rem100 = num % 100;
+            return ones[num / 100] + " hundred" + (rem100 != 0 ? " and " + ConvertToWords (rem100) : "");
+         }
+         if (num < 1000000) {
+            int rem1000 = num % 1000;
+            return ConvertToWords (num / 1000) + " thousand" + (rem1000 != 0 ? " " + ConvertToWords (rem1000) : "");
+         }
          return "Number out of range";
       }
 
