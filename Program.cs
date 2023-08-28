@@ -1,15 +1,14 @@
 ﻿while (true) {
    Console.Write ("Enter the number : ");
    if (int.TryParse (Console.ReadLine (), out int n)) {
-      int h = n;
-      int c = 0;
+      int original = n, reverse = 0;
       while (n > 0) {
-         int r = n % 10;
-         c = (c * 10) + r;
+         int rem = n % 10;
+         reverse = (reverse * 10) + rem;
          n /= 10;
       }
-      Console.WriteLine ($"Reversed number : {c}");
-      var res = (h == c) ? "It is a palindrome number" : "It is not a palindrome number";
+      Console.WriteLine ($"Reversed number : {reverse}");
+      var res = (original == reverse) ? "It is a palindrome number." : "It is not a palindrome number.";
       Console.WriteLine (res); break;
-   } else Console.WriteLine ("Invalid input. Please enter a 'NUMBER'\n");
+   } else Console.WriteLine ("Invalid input. Please enter a 'NUMBER'.\n");
 }
