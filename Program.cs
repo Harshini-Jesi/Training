@@ -1,6 +1,4 @@
-﻿using System.Xml.Serialization;
-
-while (true) {
+﻿while (true) {
    Console.Write ("Enter the number of rows : ");
    if (int.TryParse (Console.ReadLine (), out int n)) {
       Console.WriteLine ("Pascal's Triangle");
