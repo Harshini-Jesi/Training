@@ -2,15 +2,12 @@
    Console.Write ("Enter your password : ");
    string password = Console.ReadLine ();
    string spclChar = "!@#$%^&*()-+";
-   bool output = password.Length >= 6 && password.Any (char.IsDigit) && password.Any (char.IsLower) && password.Any (char.IsUpper) && password.Any (spclChar.Contains);
-   if (output == true) { Console.WriteLine ("Your password is strong."); break; } 
-   else {
-      Console.WriteLine ("Your password is not strong.");
-      if (password.Length < 6) Console.WriteLine ("Length of the password must be atleast 6.");
-      if (password.Any (char.IsDigit) == false) Console.WriteLine ("Password must contain atleast one digit.");
-      if (password.Any (char.IsLower) == false) Console.WriteLine ("Password must contain atleast one lowercase.");
-      if (password.Any (char.IsUpper) == false) Console.WriteLine ("Password must contain atleast one Uppercase.");
-      if (password.Any (spclChar.Contains) == false) Console.WriteLine ("Password must contain atleast one Special character.");
-      Console.WriteLine ("\n");
-   }
+   string a = "";
+   if (password.Length < 6) a += "Length of the password must be atleast 6.\n";
+   if (!password.Any (char.IsDigit)) a += "Password must contain atleast one digit.\n";
+   if (!password.Any (char.IsLower)) a += "Password must contain atleast one lowercase.\n";
+   if (!password.Any (char.IsUpper)) a += "Password must contain atleast one Uppercase.\n";
+   if (!password.Any (spclChar.Contains)) a += "Password must contain atleast one Special character.\n";
+   if (string.IsNullOrEmpty (a)) Console.WriteLine ("Your password is strong.");
+   else Console.WriteLine ($"Your password is weak.\n{a}"); break;
 }
