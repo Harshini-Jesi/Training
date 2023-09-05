@@ -8,6 +8,8 @@
    if (!password.Any (char.IsLower)) a += "Password must contain atleast one lowercase.\n";
    if (!password.Any (char.IsUpper)) a += "Password must contain atleast one Uppercase.\n";
    if (!password.Any (spclChar.Contains)) a += "Password must contain atleast one Special character.\n";
-   if (string.IsNullOrEmpty (a)) Console.WriteLine ("Your password is strong.");
-   else Console.WriteLine ($"Your password is weak.\n{a}"); break;
+   if (string.IsNullOrEmpty (a)) {
+      Console.WriteLine ("Your password is strong.");
+      break;
+   } else Console.WriteLine ($"Your password is weak.\n{a}");
 }
