@@ -5,12 +5,11 @@ while (true) {
    if (input.All (char.IsLetter)) {
       input = input.ToLower ();
       StringBuilder output = new StringBuilder ();
-      foreach (char c in input) {
-         if (output.Length > 0 && output[output.Length - 1] == c) output.Remove (output.Length - 1, 1);
-         else output.Append (c);
+      for (int i = 0; i < input.Length; i++) {
+         char c = input[i];
+         if ((i > 0 && input[i - 1] == c) || (i < input.Length - 1 && input[i + 1] == c)) { } else output.Append (c);
       }
-      var res = output.Length == 0 ? "Reduced string is 'Empty'" : $"Reduced string is '{output}'";
-      Console.WriteLine (res);
+      Console.WriteLine (output.Length == 0 ? "Reduced string is 'Empty'" : $"Reduced string is '{output}'");
       break;
    } else Console.WriteLine ("The string should consist of letters only.\n");
 }
