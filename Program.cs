@@ -3,8 +3,7 @@
    if (!int.TryParse (Console.ReadLine (), out int n)) continue;
    while (true) {
       Console.Write ($"Enter {n} words leaving a space between them : ");
-      string enteredWords = Console.ReadLine ();
-      string[] allWords = enteredWords.Split (' ').ToArray ();
+      string[] allWords = Console.ReadLine ().Split (' ').ToArray ();
       if (allWords.Length != n) continue;
       List<string> alignedWords = new ();
       foreach (string word in allWords) {
