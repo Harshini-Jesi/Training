@@ -11,8 +11,7 @@
          Array.Sort (chars);
          if (new string (chars) == word) alignedWords.Add (word);
       }
-      var sort = alignedWords.OrderBy (word => word.Length);
-      Console.WriteLine (alignedWords.Count == 0 ? "No abecedarian word." : $"The longest abecedarian word is {sort.LastOrDefault ()}.");
+      Console.WriteLine (alignedWords.Any () ? $"The longest abecedarian word is {alignedWords.MaxBy (word => word.Length)}." : "No abecedarian word.");
       break;
    }
    break;
