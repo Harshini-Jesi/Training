@@ -11,6 +11,4 @@ int GetInput (string prompt) {
    }
 }
 
-void swap (ref int a, ref int b) {
-   (a, b) = (b, a);
-}
+void swap (ref int a, ref int b) => (a, b) = (b, a);
