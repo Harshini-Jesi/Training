@@ -11,9 +11,11 @@ while (true) {
             Console.WriteLine ($"Index swapped number: {new string (value)}");
             break;
          } else continue;
-      }break;
+      }
+      break;
    } else continue;
 }
+
 int GetInput (string prompt) {
    while (true) {
       Console.Write (prompt);
