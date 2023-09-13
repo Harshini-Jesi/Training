@@ -1,10 +1,14 @@
 ﻿int number = GetInput ("Enter a number : ");
 char[] value = Convert.ToString (number).ToCharArray ();
-Console.WriteLine ("Enter the index positions to be swapped:");
-int a = GetInput ("FromPosition = "), b = GetInput ("ToPosition = ");
-swap (value, ref a, ref b);
-Console.WriteLine ($"Index swapped number: {new string (value)}");
-
+while (true) {
+   Console.WriteLine ("Enter the index positions to be swapped:");
+   int a = GetInput ("FromPosition = "), b = GetInput ("ToPosition = ");
+   if (a <= value.Length && b <= value.Length) {
+      swap (value, a, b);
+      Console.WriteLine ($"Index swapped number: {new string (value)}");
+      break;
+   } else Console.WriteLine ($"Enter index positions within {value.Length - 1}\n");
+}
 int GetInput (string prompt) {
    while (true) {
       Console.Write (prompt);
@@ -13,4 +17,4 @@ int GetInput (string prompt) {
    }
 }
 
-void swap (char[] value, ref int a, ref int b) => (value[b], value[a]) = (value[a], value[b]);
+void swap (char[] value, int a, int b) => (value[b], value[a]) = (value[a], value[b]);
