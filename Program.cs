@@ -1,5 +1,7 @@
-﻿class Program {
-   static void Main (string[] args) {
+﻿/// <summary>Program that swaps the number from one index position to another</summary>
+class Program {
+   /// <summary>The entry point of the program</summary>
+   static void Main () {
       int number = GetInput ("Enter a positive number : ");
       char[] arr = Convert.ToString (number).ToCharArray ();
       int max = arr.Length - 1;
@@ -9,6 +11,7 @@
       Swap (arr, from, to);
       Console.WriteLine ($"Index swapped number: {new string (arr)}");
    }
+
    ///<summary>Gets the input from the user until it is a positive number</summary>
    ///<param name="prompt">Displays the prompt for the user to enter the input</param>
    ///<param name="max">if set to -1 no range check is done, otherwise checks if value is less than or equal to max</param>
@@ -20,6 +23,10 @@
       }
    }
 
+   /// <summary>Interchanges the values in the index positions of an array</summary>
+   /// <param name="arr">character array that consists the given input number</param>
+   /// <param name="from">The index position from which the value has to swapped</param>
+   /// <param name="to">The index position to which the value has to swapped</param>
    static void Swap (char[] arr, int from, int to) => (arr[to], arr[from]) = (arr[from], arr[to]);
 }
 
