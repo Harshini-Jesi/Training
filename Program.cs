@@ -25,8 +25,8 @@ class Program {
 
    /// <summary>Interchanges the values in the index positions of an array</summary>
    /// <param name="arr">character array that consists the given input number</param>
-   /// <param name="from">The index position from which the value has to swapped</param>
-   /// <param name="to">The index position to which the value has to swapped</param>
+   /// <param name="from">The index position from which the value has to be swapped</param>
+   /// <param name="to">The index position to which the value has to be swapped</param>
    static void Swap (char[] arr, int from, int to) => (arr[to], arr[from]) = (arr[from], arr[to]);
 }
 
