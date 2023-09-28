@@ -6,7 +6,7 @@ class Program {
          Console.Write ("Enter a positive number within 25: ");
          if (!int.TryParse (Console.ReadLine (), out int value) || value <= 0 || value > 25) continue;
          Console.WriteLine ($"The {value}th Armstrong number is: {CalculateNthArmstrong (value)}");
-         //break;
+         break;
       }
 
       /// <summary>Calculates the nth armstrong number</summary>
