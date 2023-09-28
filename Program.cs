@@ -4,8 +4,8 @@ class Program {
    static void Main () {
       while (true) {
          Console.Write ("Enter a positive number: ");
-         if (int.TryParse (Console.ReadLine (), out int number) && number > 0) Console.WriteLine (IsArmstrong (number) ? "It is an Armstrong number" : "Not an Armstrong number");
-         else continue;
+         if (!int.TryParse (Console.ReadLine (), out int number) || number <= 0) continue;
+         Console.WriteLine (IsArmstrong (number) ? "It is an Armstrong number" : "Not an Armstrong number");
          break;
       }
    }
