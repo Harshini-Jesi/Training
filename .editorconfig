@@ -1,5 +1,5 @@
 [user]
-	email = harshini.s@metamation.com
+	email = harshini.sivabalan@trumpf.com
 	name = Harshini-Jesi
 
 [filter "lfs"]
@@ -11,7 +11,7 @@
 [core]
 	autocrlf = false
 	whitespace = -trailing-space,cr-at-eol
-	editor = 'C:\Program Files\Notepad++\notepad++.exe' -multiInst -notabbar -nosession -noPlugin
+	editor = '%windir%\system32\notepad.exe' -multiInst -notabbar -nosession -noPlugin
 
 [alias]
 	st = status
