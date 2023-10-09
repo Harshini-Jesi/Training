@@ -2,13 +2,10 @@
 /// and returns the winner with the most votes.</summary>
 class Program {
    static void Main () {
-      while (true) {
-         Console.Write ("Enter a string: ");
-         string input = Console.ReadLine ().ToLower ();
-         if (!input.All (char.IsLetter) || input.Length == 0) continue;
-         Console.WriteLine ($"{Winner (input)} => Winner and Votes");
-         break;
-      }
+      Console.Write ("Enter a string: ");
+      string input = Console.ReadLine ().ToLower ();
+      do Console.WriteLine ($"{Winner (input)} => Winner and Votes");
+      while (!input.All (char.IsLetter) || input.Length == 0);
    }
 
    /// <summary>Finds the most repeated char and its no.of repetition in a string</summary>
@@ -17,11 +14,9 @@ class Program {
    static (char, int) Winner (string input) {
       Dictionary<char, int> output = new ();
       char maxChar = ' '; int maxCount = 0;
-      foreach (char c in input) {
-         if (output.TryGetValue (c, out int value)) output[c] = value + 1;
-         else output.Add (c, 1);
-      }
+      foreach (char c in input) output[c] = output.TryGetValue (c, out int value) ? ++value : 1;
       foreach (var ele in output) {
+         Console.WriteLine ($"{ele.Key} - {ele.Value}");
          if (ele.Value > maxCount) {
             maxCount = ele.Value; maxChar = ele.Key;
          }
