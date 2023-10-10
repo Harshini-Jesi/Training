@@ -2,10 +2,12 @@
 /// and returns the winner with the most votes.</summary>
 class Program {
    static void Main () {
-      Console.Write ("Enter a string: ");
-      string input = Console.ReadLine ().ToLower ();
-      do Console.WriteLine ($"{Winner (input)} => Winner and Votes");
-      while (!input.All (char.IsLetter) || input.Length == 0);
+      string input = "";
+      do {
+         Console.Write ("Enter a string: ");
+         input = Console.ReadLine ().ToLower ();
+      } while (!input.All (char.IsLetter) || input.Length == 0);
+      Console.WriteLine ($"{Winner (input)} => Winner and Votes");
    }
 
    /// <summary>Finds the most repeated char and its no.of repetition in a string</summary>
