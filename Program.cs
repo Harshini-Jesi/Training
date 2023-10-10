@@ -1,15 +1,19 @@
 ﻿/// <summary>This program gets the given money X along with price P of a chocolate and required wrappers W for a chocolate in exchange,
 /// and returns the maximum number of chocolates C you can get along with any unused money X and wrappers W. </summary>
+/// <example>Input: X=10, P=1, W=2 ; Output: C=19, X=0, W=1.
+/// Input: X=20, P=3, W=2 ; Output: C=11, X=2, W=1.
+/// Input: X=45, P=2, W=3 ; Output: C=32, X=1, W=2.</example>
 class Program {
    static void Main () {
       Console.WriteLine ("Enter the given money 'X', price of a chocolate 'P' and wrappers required for chocolate in exchange 'W'." +
          "\nNote: All the values entered must be natural numbers and W must be greater than 1.");
       int money = GetInput ("X = "), price = GetInput ("P = "), min = 1, wrappers = GetInput ("W = ", min);
-      int chocolates = money / price, unusedMoney = money % price, unusedWrapper = 0;
-      if (wrappers <= chocolates) {
-         chocolates += chocolates / wrappers;
-         unusedWrapper += chocolates % wrappers;
-      } else unusedWrapper = wrappers;
+      int chocolates = money / price, unusedMoney = money % price, unusedWrapper = chocolates;
+      while (unusedWrapper >= wrappers) {
+         int exchange = unusedWrapper / wrappers;
+         chocolates += exchange;
+         unusedWrapper = exchange + (unusedWrapper % wrappers);
+      }
       Console.WriteLine ($"\nC = {chocolates}, X = {unusedMoney}, W = {unusedWrapper}" +
          $"\nwhere, C is the Maximum no.of chocolates, X is the unused money and W is the unused wrappers.");
    }
