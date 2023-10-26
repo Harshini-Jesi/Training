@@ -4,7 +4,7 @@ class Program {
    static void Main () {
       char[] arr = CharArray ();
       char spclChar = SpecialChar ();
-      Console.WriteLine ("Enter 'y' if you want to sort in descending: ");
+      Console.WriteLine ("\nEnter 'y' if you want to sort in descending: ");
       var key = Console.ReadKey (true).Key;
       var enumerableChar = arr.Where (x => x != spclChar);
       enumerableChar = (key == ConsoleKey.Y) ? enumerableChar.OrderDescending () : enumerableChar.Order ();
@@ -16,21 +16,22 @@ class Program {
    /// <summary>To check if the given array is not empty and consists of only letters</summary>
    /// <returns>The non-empty char array with letters</returns>
    static char[] CharArray () {
-      char[] arr = { };
-      while (arr.Length == 0 || !arr.All (char.IsLetter)) {
+      string arr = "";
+      do{
          Console.Write ("Enter the character array A: ");
-         arr = Console.ReadLine ().ToCharArray ();
-      }
-      return arr;
+         arr=Console.ReadLine ();
+      } while(arr.Length==0 || !arr.All(char.IsLetter));
+      return arr.ToCharArray ();
    }
 
    /// <summary>To check if the given special character is a letter</summary>
    /// <returns>The given special character</returns>
    static char SpecialChar () {
-      while (true) {
-         Console.Write ("Enter the special character S: ");
-         if (!char.TryParse (Console.ReadLine (), out char spclChar) || !char.IsLetter (spclChar)) continue;
-         else return spclChar;
-      }
+      char spclChar;
+      do {
+         Console.Write ("\nEnter the special character S: ");
+         spclChar = Console.ReadKey ().KeyChar;
+      } while(!char.IsLetter(spclChar));
+      return spclChar;
    }
 }
