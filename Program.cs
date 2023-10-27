@@ -1,7 +1,7 @@
 ﻿Dictionary<string, int> wordsAndScore = new ();
 char[] letters = { 'U', 'X', 'A', 'L', 'T', 'N', 'E' };
-var words = File.ReadAllLines ("H:/harshini.s/words.txt").
-   Where (x => x.Length >= 4 && x.Contains (letters[0]) && x.All (letters.Contains));
+var words = File.ReadAllLines ("data\\words.txt")
+   .Where (x => x.Length >= 4 && x.Contains (letters[0]) && x.All (letters.Contains));
 List<string> pangram = new ();
 foreach (string word in words) {
    if (word.Length == 4) wordsAndScore.Add (word, 1);
