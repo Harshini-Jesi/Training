@@ -2,8 +2,8 @@
 /// and returns the sorted array by keeping the elements matching S to the last of the array.</summary>
 class Program {
    static void Main () {
-      char[] arr = CharArray ();
-      char spclChar = SpecialChar ();
+      char[] arr = GetCharArray ();
+      char spclChar = GetSpecialChar ();
       Console.WriteLine ("\nEnter 'y' if you want to sort in descending: ");
       var key = Console.ReadKey (true).Key;
       var enumerableChar = arr.Where (x => x != spclChar);
@@ -15,23 +15,23 @@ class Program {
 
    /// <summary>To check if the given array is not empty and consists of only letters</summary>
    /// <returns>The non-empty char array with letters</returns>
-   static char[] CharArray () {
+   static char[] GetCharArray () {
       string arr = "";
-      do{
+      do {
          Console.Write ("Enter the character array A: ");
-         arr=Console.ReadLine ();
-      } while(arr.Length==0 || !arr.All(char.IsLetter));
+         arr = Console.ReadLine ();
+      } while (arr.Length == 0 || !arr.All (char.IsLetter));
       return arr.ToCharArray ();
    }
 
    /// <summary>To check if the given special character is a letter</summary>
    /// <returns>The given special character</returns>
-   static char SpecialChar () {
+   static char GetSpecialChar () {
       char spclChar;
       do {
          Console.Write ("\nEnter the special character S: ");
          spclChar = Console.ReadKey ().KeyChar;
-      } while(!char.IsLetter(spclChar));
+      } while (!char.IsLetter (spclChar));
       return spclChar;
    }
 }
