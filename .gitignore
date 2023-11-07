@@ -16,3 +16,6 @@
 *.vcxproj.user
 *.csproj.user
 **/launchSettings.json
+**/dotCover.Output/
+*.dcvr
+*.html
