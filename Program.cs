@@ -60,10 +60,10 @@
 
       #region Implementation ----------------------------------------
       /// <summary>Adds an element to the list and resizes its size if required</summary>
-      /// <param name="a">The element to be added</param>
-      public void Add (T a) {
+      /// <param name="elem">The element to be added</param>
+      public void Add (T elem) {
          if (mCount == Capacity) Array.Resize (ref mValues, mCount * 2);
-         mValues[mCount] = a;
+         mValues[mCount] = elem;
          mCount++;
       }
 
@@ -80,22 +80,22 @@
 
       /// <summary>Inserts an element between two elements in the list</summary>
       /// <param name="index">The index position to which the element is to be inserted</param>
-      /// <param name="a">The element to be inserted</param>
+      /// <param name="elem">The element to be inserted</param>
       /// <exception cref="IndexOutOfRangeException">Throws exception when the given index below 0 or above the count</exception>
-      public void Insert (int index, T a) {
+      public void Insert (int index, T elem) {
          if (index < 0 || index > Count) throw new IndexOutOfRangeException ("Index out of valid range.");
          if (mCount == Capacity) Array.Resize (ref mValues, mCount * 2);
          for (int i = mCount; i > index; i--) mValues[i] = mValues[i - 1];
-         mValues[index] = a;
+         mValues[index] = elem;
          mCount++;
       }
 
       /// <summary>Removes an element from the list</summary>
-      /// <param name="a">The element to be removed</param>
+      /// <param name="elem">The element to be removed</param>
       /// <returns><text>true</text>if the element is removed</returns>
       /// <exception cref="InvalidOperationException">Throws exception when the element is not found in the list</exception>
-      public bool Remove (T a) {
-         int index = Array.IndexOf (mValues, a);
+      public bool Remove (T elem) {
+         int index = Array.IndexOf (mValues, elem);
          if (index == -1) throw new InvalidOperationException ("Item not found in the list");
          for (int i = index; i < Count; i++) mValues[i] = mValues[i + 1];
          mCount--;
@@ -112,8 +112,11 @@
       }
       #endregion
 
+      #region Private data ------------------------------------------
+      /// <summary>Initialisation of private variables for array and int</summary>
       T[] mValues;
       int mCount;
+      #endregion
    }
    #endregion
 }
