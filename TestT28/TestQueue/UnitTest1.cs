@@ -1,68 +1,67 @@
-using System;
 using T28;
 namespace TestQueue {
    [TestClass]
    public class UnitTest1 {
-      TQueue<int> queue = new ();
-
-      [TestMethod]
-      public void TestEnqueue () {
-         queue.Enqueue (1);
-         queue.Enqueue (2);
-         queue.Enqueue (3);
-         Assert.AreEqual (3, queue.Count);
-         Assert.AreEqual (4, queue.Capacity);
-         queue.Enqueue (5);
-         queue.Enqueue (6);
-         Assert.AreEqual (5, queue.Count);
-         Assert.AreEqual (8, queue.Capacity);
-      }
-
+     
       [TestMethod]
       public void TestDequeue () {
-         queue.Enqueue (1);
-         queue.Enqueue (2);
-         queue.Enqueue (3);
-         queue.Dequeue ();
-         Assert.AreEqual (2, queue.Count);
-      }
-
-      [TestMethod]
-      public void TestPeek () {
-         queue.Enqueue (1);
-         queue.Enqueue (2);
-         queue.Enqueue (3);
-         Assert.AreEqual (1, queue.Peek ());
-      }
-
-      [TestMethod]
-      public void TestResize () {
-         queue.Enqueue (1);
-         queue.Enqueue (2);
-         queue.Enqueue (3);
-         queue.Enqueue (4);
-         queue.Dequeue ();
-         queue.Dequeue ();
-         queue.Enqueue (5);
-         queue.Enqueue (6);
-         queue.Enqueue (7);
-         Assert.AreEqual (5, queue.Count);
-         Assert.AreEqual (8, queue.Capacity);
-         Assert.AreEqual (3, queue.Peek ());
-      }
-
-      [TestMethod]
-      public void TestExceptionCheck () {
-         Assert.ThrowsException<InvalidOperationException> (() => queue.Dequeue ());
-         Assert.ThrowsException<InvalidOperationException> (() => queue.Peek ());
+         mQueue.Enqueue (1);
+         mQueue.Enqueue (2);
+         mQueue.Enqueue (3);
+         mQueue.Dequeue ();
+         Assert.AreEqual (2, mQueue.Count);
       }
 
       [TestMethod]
       public void TestDisplay () {
-         queue.Enqueue (1);
-         queue.Enqueue (2);
-         queue.Enqueue (3);
-         queue.Display ();
+         mQueue.Enqueue (1);
+         mQueue.Enqueue (2);
+         mQueue.Enqueue (3);
+         Assert.AreEqual (1,2,3, mQueue.Display ());
       }
+
+      [TestMethod]
+      public void TestEnqueue () {
+         mQueue.Enqueue (1);
+         mQueue.Enqueue (2);
+         mQueue.Enqueue (3);
+         Assert.AreEqual (3, mQueue.Count);
+         Assert.AreEqual (4, mQueue.Capacity);
+         mQueue.Enqueue (5);
+         mQueue.Enqueue (6);
+         Assert.AreEqual (5, mQueue.Count);
+         Assert.AreEqual (8, mQueue.Capacity);
+      }
+
+      [TestMethod]
+      public void TestExceptionCheck () {
+         Assert.ThrowsException<InvalidOperationException> (() => mQueue.Dequeue ());
+         Assert.ThrowsException<InvalidOperationException> (() => mQueue.Peek ());
+      }
+
+      [TestMethod]
+      public void TestPeek () {
+         mQueue.Enqueue (1);
+         mQueue.Enqueue (2);
+         mQueue.Enqueue (3);
+         Assert.AreEqual (1, mQueue.Peek ());
+      }
+
+      [TestMethod]
+      public void TestResize () {
+         mQueue.Enqueue (1);
+         mQueue.Enqueue (2);
+         mQueue.Enqueue (3);
+         mQueue.Enqueue (4);
+         mQueue.Dequeue ();
+         mQueue.Dequeue ();
+         mQueue.Enqueue (5);
+         mQueue.Enqueue (6);
+         mQueue.Enqueue (7);
+         Assert.AreEqual (5, mQueue.Count);
+         Assert.AreEqual (8, mQueue.Capacity);
+         Assert.AreEqual (3, mQueue.Peek ());
+      }
+      TQueue<int> mQueue = new ();
    }
 }
