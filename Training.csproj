@@ -11,10 +11,13 @@
   <ItemGroup>
     <Compile Remove="TestT26\**" />
     <Compile Remove="TestT27\**" />
+    <Compile Remove="TestT28\**" />
     <EmbeddedResource Remove="TestT26\**" />
     <EmbeddedResource Remove="TestT27\**" />
+    <EmbeddedResource Remove="TestT28\**" />
     <None Remove="TestT26\**" />
     <None Remove="TestT27\**" />
+    <None Remove="TestT28\**" />
   </ItemGroup>
 
   <ItemGroup>

@@ -2,45 +2,46 @@ using T27;
 namespace TestStack {
    [TestClass]
    public class UnitTest1 {
-      TStack<int> num = new ();
 
       [TestMethod]
-      public void TestPush () {
-         num.Push(1);
-         num.Push(2);
-         num.Push(3);
-         num.Push(4);
-         Assert.AreEqual(4, num.Count);
-         Assert.AreEqual (4, num.Capacity);
-         num.Push(5);
-         Assert.AreEqual(5, num.Count);
-         Assert.AreEqual(8, num.Capacity);
-      }
-
-      [TestMethod]
-      public void TestPop () {
-         Assert.ThrowsException<InvalidOperationException>(() => num.Pop());
-         num.Push (6);
-         num.Push (7);
-         Assert.AreEqual(7, num.Pop());
-         Assert.AreEqual(1, num.Count);
+      public void TestDisplay () {
+         mNum.Push (4);
+         mNum.Push (5);
+         mNum.Push (6);
+         Assert.AreEqual (4, 5, 6, mNum.Display ());
       }
 
       [TestMethod]
       public void TestPeek () {
-         Assert.ThrowsException<InvalidOperationException>(() => num.Peek());
-         num.Push (8);
-         num.Push (9);
-         num.Push (10);
-         Assert.AreEqual (10, num.Peek ());
+         Assert.ThrowsException<InvalidOperationException> (() => mNum.Peek ());
+         mNum.Push (8);
+         mNum.Push (9);
+         mNum.Push (10);
+         Assert.AreEqual (10, mNum.Peek ());
       }
 
       [TestMethod]
-      public void TestDisplay () {
-         num.Push (4);
-         num.Push (5);
-         num.Push (6);
-         num.Display ();
+      public void TestPop () {
+         Assert.ThrowsException<InvalidOperationException> (() => mNum.Pop ());
+         mNum.Push (6);
+         mNum.Push (7);
+         Assert.AreEqual (7, mNum.Pop ());
+         Assert.AreEqual (1, mNum.Count);
       }
+
+      [TestMethod]
+      public void TestPush () {
+         mNum.Push (1);
+         mNum.Push (2);
+         mNum.Push (3);
+         mNum.Push (4);
+         Assert.AreEqual (4, mNum.Count);
+         Assert.AreEqual (4, mNum.Capacity);
+         mNum.Push (5);
+         Assert.AreEqual (5, mNum.Count);
+         Assert.AreEqual (8, mNum.Capacity);
+      }
+      TStack<int> mNum = new ();
+
    }
 }
