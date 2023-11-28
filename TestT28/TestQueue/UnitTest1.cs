@@ -2,66 +2,73 @@ using T28;
 namespace TestQueue {
    [TestClass]
    public class UnitTest1 {
-     
+
       [TestMethod]
       public void TestDequeue () {
-         mQueue.Enqueue (1);
-         mQueue.Enqueue (2);
-         mQueue.Enqueue (3);
+         for (int i = 1; i < 5; i++) {
+            mNumb.Enqueue (i);
+            mQueue.Enqueue (i);
+         }
+         mNumb.Dequeue ();
          mQueue.Dequeue ();
-         Assert.AreEqual (2, mQueue.Count);
+         Assert.AreEqual (mQueue.Count, mNumb.Count);
       }
 
       [TestMethod]
       public void TestDisplay () {
-         mQueue.Enqueue (1);
-         mQueue.Enqueue (2);
-         mQueue.Enqueue (3);
-         Assert.AreEqual (1,2,3, mQueue.Display ());
+         mNumb.Enqueue (1);
+         mNumb.Enqueue (2);
+         mNumb.Enqueue (3);
+         Assert.AreEqual (1, 2, 3, mNumb.Display ());
       }
 
       [TestMethod]
       public void TestEnqueue () {
-         mQueue.Enqueue (1);
-         mQueue.Enqueue (2);
-         mQueue.Enqueue (3);
-         Assert.AreEqual (3, mQueue.Count);
-         Assert.AreEqual (4, mQueue.Capacity);
+         for (int i = 1; i < 5; i++) {
+            mNumb.Enqueue (i);
+            mQueue.Enqueue (i);
+         }
+         Assert.AreEqual (mQueue.Count, mNumb.Count);
+         Assert.AreEqual (4, mNumb.Capacity);
+         mNumb.Enqueue (5);
          mQueue.Enqueue (5);
-         mQueue.Enqueue (6);
-         Assert.AreEqual (5, mQueue.Count);
-         Assert.AreEqual (8, mQueue.Capacity);
+         Assert.AreEqual (mQueue.Count, mNumb.Count);
+         Assert.AreEqual (8, mNumb.Capacity);
       }
 
       [TestMethod]
       public void TestExceptionCheck () {
-         Assert.ThrowsException<InvalidOperationException> (() => mQueue.Dequeue ());
-         Assert.ThrowsException<InvalidOperationException> (() => mQueue.Peek ());
+         Assert.ThrowsException<InvalidOperationException> (() => mNumb.Dequeue ());
+         Assert.ThrowsException<InvalidOperationException> (() => mNumb.Peek ());
       }
 
       [TestMethod]
       public void TestPeek () {
-         mQueue.Enqueue (1);
-         mQueue.Enqueue (2);
-         mQueue.Enqueue (3);
-         Assert.AreEqual (1, mQueue.Peek ());
+         for (int i = 1; i < 5; i++) {
+            mNumb.Enqueue (i);
+            mQueue.Enqueue (i);
+         }
+         Assert.AreEqual (mQueue.Peek (), mNumb.Peek ());
       }
 
       [TestMethod]
       public void TestResize () {
-         mQueue.Enqueue (1);
-         mQueue.Enqueue (2);
-         mQueue.Enqueue (3);
-         mQueue.Enqueue (4);
+         for (int i = 1; i < 5; i++) {
+            mNumb.Enqueue (i);
+            mQueue.Enqueue (i);
+         }
+         mNumb.Dequeue ();
          mQueue.Dequeue ();
-         mQueue.Dequeue ();
+         mNumb.Enqueue (5);
+         mNumb.Enqueue (6);
          mQueue.Enqueue (5);
          mQueue.Enqueue (6);
-         mQueue.Enqueue (7);
-         Assert.AreEqual (5, mQueue.Count);
-         Assert.AreEqual (8, mQueue.Capacity);
-         Assert.AreEqual (3, mQueue.Peek ());
+         Assert.AreEqual (mQueue.Count, mNumb.Count);
+         Assert.AreEqual (8, mNumb.Capacity);
+         Assert.AreEqual (mQueue.Peek (), mNumb.Peek ());
       }
-      TQueue<int> mQueue = new ();
+
+      TQueue<int> mNumb = new ();
+      Queue<int> mQueue = new ();
    }
 }
