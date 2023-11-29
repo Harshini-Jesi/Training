@@ -1,7 +1,7 @@
 ﻿namespace T28 {
-   #region class Program ---------------------------------------------------------------------
+   #region class Program --------------------------------------------------------------------------
    class Program {
-      #region Methods ---------------------------------------------
+      #region Methods -----------------------------------------------
       static void Main () {
          TQueue<int> queue = new ();
          queue.Enqueue (1);
@@ -26,7 +26,7 @@
    }
    #endregion
 
-   #region class TQueue<T> ---------------------------------------------------------------------
+   #region class TQueue<T> ------------------------------------------------------------------------
    /// <summary>Class TQueue defines the properties and methods of a Queue of T</summary>
    /// <typeparam name="T">T is type of variables declared in the queue</typeparam>
    public class TQueue<T> {
@@ -42,7 +42,7 @@
       public bool IsEmpty => mCount == 0;
       #endregion
 
-      #region Methods ---------------------------------------------
+      #region Methods -----------------------------------------------
       /// <summary>Removes the first-in element on the queue</summary>
       /// <returns>The removed element</returns>
       public T Dequeue () {
