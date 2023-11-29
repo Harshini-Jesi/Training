@@ -8,7 +8,7 @@
          queue.Enqueue (2);
          queue.Enqueue (3);
          queue.Enqueue (4);
-         Console.WriteLine(queue.Display ());
+         Console.WriteLine (queue.Display ());
          queue.Peek ();
          queue.Dequeue ();
          queue.Dequeue ();
@@ -30,7 +30,7 @@
    /// <summary>Class TQueue defines the properties and methods of a Queue of T</summary>
    /// <typeparam name="T">T is type of variables declared in the queue</typeparam>
    public class TQueue<T> {
-      
+
       #region Properties --------------------------------------------
       /// <summary>Gets the capacity of the queue</summary>
       public int Capacity => mValues.Length;
@@ -42,7 +42,7 @@
       public bool IsEmpty => mCount == 0;
       #endregion
 
-      #region Implementation ----------------------------------------
+      #region Methods ---------------------------------------------
       /// <summary>Removes the first-in element on the queue</summary>
       /// <returns>The removed element</returns>
       public T Dequeue () {
@@ -80,7 +80,9 @@
          Console.WriteLine (mValues[mDeCount]);
          return mValues[mDeCount];
       }
+      #endregion
 
+      #region Implementation ----------------------------------------
       /// <summary>Resizes the array and arranges the elements in the order of first-in to last-in on the resized array</summary>
       void Resize () {
          var temp = new T[Capacity * 2];
