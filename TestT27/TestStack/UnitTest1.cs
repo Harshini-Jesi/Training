@@ -28,7 +28,7 @@ namespace TestStack {
             mNum.Push (i);
             mStack.Push (i);
          }
-         Assert.AreEqual (mStack.Pop(), mNum.Pop ());
+         Assert.AreEqual (mStack.Pop (), mNum.Pop ());
          Assert.AreEqual (mStack.Count, mNum.Count);
       }
 

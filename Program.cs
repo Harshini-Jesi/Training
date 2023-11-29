@@ -42,8 +42,7 @@
       public bool IsEmpty => mCount == 0;
       #endregion
 
-      #region Implementation ----------------------------------------
-
+      #region Methods ---------------------------------------------
       /// <summary>To print the elements on stack</summary>
       public string Display () => string.Join (',', mValues);
 
