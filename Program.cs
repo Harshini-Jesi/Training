@@ -35,7 +35,6 @@
       #endregion
 
       #region Properties --------------------------------------------
-
       /// <summary>Gets the capacity of the list</summary>
       public int Capacity => mValues.Length;
 
@@ -58,7 +57,7 @@
       }
       #endregion
 
-      #region Implementation ----------------------------------------
+      #region Methods ---------------------------------------------
       /// <summary>Adds an element to the list and resizes its size if required</summary>
       /// <param name="elem">The element to be added</param>
       public void Add (T elem) {
