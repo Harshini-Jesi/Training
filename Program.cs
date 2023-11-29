@@ -1,7 +1,7 @@
 ﻿namespace T27 {
-   #region class Program ---------------------------------------------------------------------
+   #region class Program --------------------------------------------------------------------------
    class Program {
-      #region Methods ---------------------------------------------
+      #region Methods -----------------------------------------------
       static void Main () {
          TStack<int> num = new ();
          num.Push (1);
@@ -26,7 +26,7 @@
    }
    #endregion
 
-   #region class TStack<T> ---------------------------------------------------------------------
+   #region class TStack<T> ------------------------------------------------------------------------
    /// <summary>Class TStack defines the properties and methods of a Stack of T</summary>
    /// <typeparam name="T">T is type of variables declared in the stack</typeparam>
    public class TStack<T> {
@@ -42,7 +42,7 @@
       public bool IsEmpty => mCount == 0;
       #endregion
 
-      #region Methods ---------------------------------------------
+      #region Methods -----------------------------------------------
       /// <summary>To print the elements on stack</summary>
       public string Display () => string.Join (',', mValues);
 
