@@ -1,7 +1,7 @@
 ﻿namespace T26 {
-   #region class Program ---------------------------------------------------------------------
+   #region class Program --------------------------------------------------------------------------
    class Program {
-      #region Methods ---------------------------------------------
+      #region Methods -----------------------------------------------
       public static void Main () {
          MyList<int> numbers = new ();
          numbers.Add (1);
@@ -21,7 +21,7 @@
    }
    #endregion
 
-   #region class MyList<T> ---------------------------------------------------------------------
+   #region class MyList<T> ------------------------------------------------------------------------
    /// <summary>Class MyList defines the properties and methods of a List of T</summary>
    /// <typeparam name="T">T is type of variables declared in the List</typeparam>
    public class MyList<T> {
@@ -57,7 +57,7 @@
       }
       #endregion
 
-      #region Methods ---------------------------------------------
+      #region Methods -----------------------------------------------
       /// <summary>Adds an element to the list and resizes its size if required</summary>
       /// <param name="elem">The element to be added</param>
       public void Add (T elem) {
