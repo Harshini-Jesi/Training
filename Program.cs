@@ -1,16 +1,16 @@
 ﻿using System.Text;
 using static System.Console;
 
-#region Program ------------------------------------------------------------------------------
+#region class Program -----------------------------------------------------------------------------
 class Program {
-   #region Methods ---------------------------------------------
+   #region Methods --------------------------------------------------
    /// <summary>Prints the solutions of eight queens problem</summary>
    static void Main () {
-      WriteLine ("Enter U to print unique solutions.\nEnter anyother key to print all solutions.");
-      bool isUnique = false;
-      if (ReadKey (true).Key == ConsoleKey.U) isUnique = true;
+      WriteLine ("Press U to print unique solutions.\nPress any other key to print all solutions.");
+      bool iUnique = false;
+      if (ReadKey (true).Key == ConsoleKey.U) iUnique = true;
       Clear ();
-      PlaceQueen (0, isUnique);
+      PlaceQueen (0, iUnique);
       PrintGrid ();
    }
 
@@ -20,7 +20,7 @@ class Program {
    /// <returns><text>true</text>if the queen is safe to be placed</returns>
    static bool IsSafe (int row, int column) {
       for (int prevRow = 0; prevRow < row; prevRow++) {
-         var prevColumn = mPositions[prevRow];
+         var prevColumn = sPositions[prevRow];
          if (prevColumn == column || Math.Abs (row - prevRow) == Math.Abs (column - prevColumn)) return false;
       }
       return true;
@@ -28,16 +28,16 @@ class Program {
 
    /// <summary>Places the queen in the safe cell</summary>
    /// <param name="row">Row position in which the queen is to be placed</param>
-   /// <param name="isUnique">Bool function - if true,adds only unique solutions</param>
-   static void PlaceQueen (int row, bool isUnique) {
+   /// <param name="iUnique">Bool function - if true,adds only unique solutions</param>
+   static void PlaceQueen (int row, bool iUnique) {
       for (int column = 0; column < 8; column++) {
          if (IsSafe (row, column)) {
-            mPositions[row] = column;
-            var eachSol = mPositions.ToArray ();
+            sPositions[row] = column;
+            var eachSol = sPositions.ToArray ();
             if (row == 7) {
-               if (isUnique) UniqueSoln (eachSol);
-               else mSolns.Add (eachSol);
-            } else PlaceQueen (row + 1, isUnique);
+               if (iUnique) UniqueSoln (eachSol);
+               else sSolns.Add (eachSol);
+            } else PlaceQueen (row + 1, iUnique);
          }
       }
    }
@@ -45,10 +45,10 @@ class Program {
    /// <summary>Prints the grid of the chessboard</summary>
    static void PrintGrid () {
       OutputEncoding = Encoding.UTF8;
-      for (int j = 0; j < mSolns.Count; j++) {
+      for (int j = 0; j < sSolns.Count; j++) {
          CursorLeft = CursorTop = 1;
-         WriteLine ($"Solution {j + 1} of {mSolns.Count}\n");
-         var eachSol = mSolns[j];
+         WriteLine ($"Solution {j + 1} of {sSolns.Count}\n");
+         var eachSol = sSolns[j];
          for (int i = 0; i < 8; i++) {
             WriteLine (i == 0 ? $"┌{string.Concat (Enumerable.Repeat ("───┬", 7))}───┐" :
                $"├{string.Concat (Enumerable.Repeat ("───┼", 7))}───┤");
@@ -76,7 +76,7 @@ class Program {
          // Checks if the mirrored array is already present in the solution
          if (IsPresent (temp.Reverse ().ToArray ())) return;
       }
-      mSolns.Add (sln);
+      sSolns.Add (sln);
 
       // Returns the 90 degrees rotated array
       static int[] Rotate (int[] soln) {
@@ -87,13 +87,13 @@ class Program {
       }
 
       // Checks if an array is already present in the solutions
-      static bool IsPresent (int[] test) => mSolns.Any (a => a.SequenceEqual (test));
+      static bool IsPresent (int[] test) => sSolns.Any (a => a.SequenceEqual (test));
    }
    #endregion
 
-   #region Private -----------------------------------------------
-   static int[] mPositions = new int[8];
-   static List<int[]> mSolns = new ();
+   #region Private data ---------------------------------------------
+   static int[] sPositions = new int[8];
+   static List<int[]> sSolns = new ();
    #endregion
 }
 #endregion
