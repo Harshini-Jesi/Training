@@ -25,26 +25,18 @@
                eArray = result.Split ('e');
                if (IsValid (eArray[0], '.') && IsValid (eArray[1])) {
                   // Conversion of the string before 'e' i.e., integral part
-                  if (eArray[0].StartsWith ('.') || eArray[0].StartsWith ('+') || eArray[0].StartsWith ('-')) {
-                     integral = StartCheck (eArray[0]);
-                  } else integral = DoubleConvert (eArray[0]);
+                  integral = (eArray[0].StartsWith ('.') || eArray[0].StartsWith ('+') || eArray[0].StartsWith ('-')) ? StartCheck (eArray[0]) : DoubleConvert (eArray[0]);
                   // Conversion of the string after 'e' i.e., exponential part
-                  if (eArray[1].StartsWith ('-')) {
-                     exponential = -1 * IntConvert (eArray[1]);
-                  } else exponential = IntConvert (eArray[1]);
+                  exponential = (eArray[1].StartsWith ('-') ? -1 : 1) * IntConvert (eArray[1]);
                   output = integral * Math.Pow (10, exponential);
                   return true;
-               } else { output = double.NaN; return false; }
-            } else { output = double.NaN; return false; }
-         } else if (IsValid (result, '.') || IsValid (result)) {
-            if (result.StartsWith ('.') || result.StartsWith ('+') || result.StartsWith ('-')) {
-               output = StartCheck (result);
-               return true;
-            } else {
-               output = DoubleConvert (result);
-               return true;
+               }
             }
-         } else { output = double.NaN; return false; }
+         } else if (IsValid (result, '.') || IsValid (result)) {
+            output = (result.StartsWith ('.') || result.StartsWith ('+') || result.StartsWith ('-')) ? StartCheck (result) : DoubleConvert (result);
+            return true;
+         }
+         output = double.NaN; return false;
       }
 
       /// <summary>To check if the string contains a particular char only once</summary>
@@ -61,12 +53,9 @@
          if (string.IsNullOrEmpty (s) || s.StartsWith ('e')) return false;
          else if ((s.StartsWith ('+') || s.StartsWith ('-') || s.StartsWith (dot)) && s != s[0].ToString ()) {
             string s1 = s.Substring (1);
-            if (s1.All (char.IsDigit)) return true;
-            else if (s.Contains (dot) && DotCheck (s1)) return true;
-            else return false;
-         } else if (s.All (char.IsDigit)) return true;
-         else if (s.Contains (dot) && DotCheck (s)) return true;
-         return false;
+            return s1.All (char.IsDigit) || (s.Contains (dot) && DotCheck (s1));
+         }
+         return s.All (char.IsDigit) || (s.Contains (dot) && DotCheck (s));
       }
 
       /// <summary>To convert the string to int</summary>
@@ -91,12 +80,7 @@
                numDouble += (c - '0') * factorial;
                factorial *= 0.1;
             }
-         } else {
-            foreach (char c in s) {
-               if (!char.IsDigit (c)) return double.NaN;
-               numDouble = (numDouble * 10) + (c - '0');
-            }
-         }
+         } else foreach (char c in s) numDouble = (numDouble * 10) + (c - '0');
          return numDouble;
       }
 
@@ -111,10 +95,7 @@
                intDouble += (c - '0') * deci;
                deci *= 0.1;
             }
-         } else if (DotCheck (num) || num.All (char.IsDigit)) {
-            if (s.StartsWith ('+')) intDouble = DoubleConvert (num);
-            else if (s.StartsWith ('-')) intDouble = -1 * DoubleConvert (num);
-         } else intDouble = double.NaN;
+         } else if (DotCheck (num) || num.All (char.IsDigit)) intDouble = (s.StartsWith ('-') ? -1 : 1) * DoubleConvert (num);
          return intDouble;
       }
 
@@ -122,12 +103,10 @@
       /// <param name="s">The string to be checked</param>
       /// <returns><text>true</text>if the string has only one '.' and digits</returns>
       static bool DotCheck (string s) {
-         if (s.Contains ('.')) {
-            if (SplitLengthCheck (s, '.')) {
+         if (s.Contains ('.')) if (SplitLengthCheck (s, '.')) {
                string s2 = s.Replace (".", "");
-               if (s2.All (char.IsDigit)) return true;
-            } else return false;
-         } else return false;
+               return s2.All (char.IsDigit);
+            }
          return false;
       }
    }
