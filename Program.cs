@@ -30,11 +30,7 @@
                   } else integral = DoubleConvert (eArray[0]);
                   // Conversion of the string after 'e' i.e., exponential part
                   if (eArray[1].StartsWith ('-')) {
-                     string expower = eArray[1].Substring (1);
-                     exponential = -1 * IntConvert (expower);
-                  } else if (eArray[1].StartsWith ('+')) {
-                     string expower = eArray[1].Substring (1);
-                     exponential = IntConvert (expower);
+                     exponential = -1 * IntConvert (eArray[1]);
                   } else exponential = IntConvert (eArray[1]);
                   output = integral * Math.Pow (10, exponential);
                   return true;
@@ -78,6 +74,7 @@
       /// <returns>The converted int</returns>
       static int IntConvert (string s) {
          int power = 0;
+         if (s.StartsWith ('+') || s.StartsWith ('-')) s = s.Substring (1);
          foreach (char c in s) power = (power * 10) + (c - '0');
          return power;
       }
@@ -94,7 +91,12 @@
                numDouble += (c - '0') * factorial;
                factorial *= 0.1;
             }
-         } else foreach (char c in s) numDouble = char.IsDigit (c) ? (numDouble * 10) + (c - '0') : double.NaN;
+         } else {
+            foreach (char c in s) {
+               if (!char.IsDigit (c)) return double.NaN;
+               numDouble = (numDouble * 10) + (c - '0');
+            }
+         }
          return numDouble;
       }
 
