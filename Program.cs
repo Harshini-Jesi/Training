@@ -103,10 +103,12 @@
       /// <param name="s">The string to be checked</param>
       /// <returns><text>true</text>if the string has only one '.' and digits</returns>
       static bool DotCheck (string s) {
-         if (s.Contains ('.')) if (SplitLengthCheck (s, '.')) {
+         if (s.Contains ('.')) {
+            if (SplitLengthCheck (s, '.')) {
                string s2 = s.Replace (".", "");
                return s2.All (char.IsDigit);
             }
+         }
          return false;
       }
    }
