@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="MsTest\**" />
+    <EmbeddedResource Remove="MsTest\**" />
+    <None Remove="MsTest\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove=".gitconfig" />
     <None Remove=".gitignore" />
   </ItemGroup>
 
